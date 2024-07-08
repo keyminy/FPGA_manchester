@@ -34,6 +34,8 @@ begin
     if (rst == 0)
         cnt <= 15;   
     else if (pl1 & ~pl0)
+    //pluse 1MHZ falling일때 
+    // counter clear동작이 falling에서 이루어져야, 
         if (st0 & ~st1)
             cnt <= 0;
         else if (cnt < 15)
