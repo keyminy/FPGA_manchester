@@ -10,9 +10,7 @@ module mch_rx_ctl
 reg rd0,rd1;
 
 reg rxing;	// H : Receiving Data.
-// rxing : data가 없는 구간에서 대기한다.
-// data가 없으면 low였다가 수신되기 시작하면 high...
-reg [5:0] cnt; // clock을 만들기위한 counter
+reg [5:0] cnt;
 
 reg pl0,pl1;
 
@@ -142,7 +140,6 @@ begin
 		end
 	else
 		if ((rxing == 0) & (rd1 & ~rd0))
-		// 수신신호의 falling이 발생
 			begin
 				rxing <= 1;	cnt <= 0;
 			end

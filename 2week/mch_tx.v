@@ -3,21 +3,17 @@ module mch_tx
     input   rst,
     input   clk,
     input   start,
-    input   [7:0] pd0,pd1,pd2,pd3, // 전송할 8bit ascii 4개
-    output  reg txsd // txsd출력
+    input   [7:0] pd0,pd1,pd2,pd3,
+    output  reg txsd
 );
 
 wire [7:0] d_sync,length;
-// length : 몇 byte까지 수신할 것인지
 reg [7:0] pd_sel;
 
 wire [1:0] stm;
 wire [6:0] q80;
 
 wire pls1m,pls2m;
-// 2mhz pulse : serial data가 나왔을때
-// 100mhz clock과 바로 xor하는 것은 위험하다.
-// 한 clock정도, sd와 clock이 
 
 reg pl0,pl1;	// 2MHz Pulse Shift
 

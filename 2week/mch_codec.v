@@ -4,10 +4,10 @@ module mch_codec
     input 	clk,  // 100MHz Clock Input
     input 	btnr, // start btn. Tact Switch Input. Push High
     input 	btnd, // LED sel btn. Tact Switch Input. Push High
-    input 	[15:0] sw, // 입력 설정 slide switch
-    input	rxsd, // 수신 값 받음
+    input 	[15:0] sw,
+    input	rxsd,
     //
-    output  txsd, // 송신
+    output  txsd,
     output	[6:0] seg,
     output  dp,
     output	[3:0] an,
@@ -21,12 +21,12 @@ reg 	k0,k1,lsel;
 
 wire   [7:0] pd0,pd1,pd2,pd3;
 
-wire 	rcv_done; // data수신이 완료될때마다 toggle발생
-wire 	[7:0]	rlength,rpd0,rpd1,rpd2,rpd3; 
-wire 	[15:0]	rpd; // 아스키 값
+wire 	rcv_done;
+wire 	[7:0]	rlength,rpd0,rpd1,rpd2,rpd3;
+wire 	[15:0]	rpd;
 
 //
-// a~g는 항상 off
+
 assign seg = 7'b1111111;	// Always Off
 
 assign dp = 0;	// Always On
@@ -37,9 +37,9 @@ begin
 	if (rst == 0)
 		led <= 0;	
 	else if (lsel == 0)
-		led <= sw; // lsel이 low면 송신값
+		led <= sw;
 	else
-		led = rpd; // high면 수신값
+		led = rpd;
 end
 
 always@(negedge rst, posedge clk)
@@ -129,6 +129,6 @@ debounce u_debounce1
 .key  		(key	  	)
 );
 
-assign rst = ~btnl; // reset은 debounce제거 안해도 상관없음
+assign rst = ~btnl;
 
 endmodule

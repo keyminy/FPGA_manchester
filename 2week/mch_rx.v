@@ -13,7 +13,7 @@ wire pls1m,pls2m;
 
 wire sy_ok,rcv_sd;
 
-reg dsy_ok,drcv_sd; // timing을 맞추기 위한 delay(위상 맞추기)
+reg dsy_ok,drcv_sd;
 
 //
 

@@ -4,11 +4,11 @@ module debounce(
     output reg key
     );
     
-reg [15:0] cnt; // 5О©╫О©╫ О©╫О©╫О©╫О©╫
+reg [15:0] cnt; // 5╦╦ ╨паж
 reg pls_1k0,pls_1k1;
 
 reg btn0,btn1;
-reg [4:0] btn_cnt; // 31 О©╫О©╫О©╫О©╫
+reg [4:0] btn_cnt; // 31 ╨паж
 
 always@(negedge rst, posedge clk)
 begin
@@ -38,8 +38,8 @@ begin
     else 
         begin
             pls_1k1 <= pls_1k0;
-           if (cnt < 49999)  // for Board Implementation
-            // if (cnt < 49)   // for Simulation Only
+       //     if (cnt < 49999)  // for Board Implementation
+            if (cnt < 49)   // for Simulation Only
                 cnt <= cnt + 1;
             else
                 begin
